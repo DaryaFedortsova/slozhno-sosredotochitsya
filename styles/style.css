@@ -1,5 +1,344 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
 .page {
-  /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
+  max-inline-size: 1024px;
+  background-color: var(--bg-color);
+  background-image: var(--bg-image);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.header {
+  display: grid;
+  grid-template-rows: 1fr min-content 1fr;
+  padding: 20px;
+}
+
+.size {
+  position: relative;
+  block-size: 100vh;
+  min-block-size: 668px;
+}
+
+.decorated-zone::before {
+  content: "";
+  top: 20px;
+  right: 20px;
+  border-block-start: 1px solid var(--color-accent-decor);
+  border-inline-end: 1px solid var(--color-accent-decor);
+  block-size: 25px;
+  inline-size: 25px;
+  position: absolute;
+}
+
+.decorated-zone::after {
+  content: "";
+  bottom: 20px;
+  left: 20px;
+  border-inline-start: 1px solid var(--color-accent-decor);
+  border-block-end: 1px solid var(--color-accent-decor);
+  block-size: 25px;
+  inline-size: 25px;
+  position: absolute;
+}
+
+.header__decorated-element {
+  position: absolute;
+  display: flex;
+  gap: 11px;
+  justify-self: flex-end;
+  padding: 20px 28px 0 0;
+}
+
+.header__decorated-element::before {
+  content: "rec";
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-size: var(--font-size-medium);
+  line-height: 139%;
+  font-weight: 400;
+}
+
+.header__decorated-element::after {
+  content: "";
+  align-self: center;
+  display: block;
+  height: 9px;
+  width: 9px;
+  background-color: var(--color-accent);
+  box-shadow: 0 0 4px 3px var(--color-accent);
+  border-radius: 100%;
+}
+
+.header__theme-menu {
+  justify-self: center;
+}
+
+.header__theme-menu-list {
+  display: flex;
+  gap: 11px;
+}
+
+.header__theme-menu-button {
+  text-transform: lowercase;
+  background-color: transparent;
+  border: none;
+  color: var(--color-accent-decor);
+  line-height: 100%;
+  font-size: var(--font-size-medium);
+  cursor: pointer;
+  appearance: none;
+  padding: 2px 13px;
+}
+
+.header__theme-menu-button:hover {
+  outline: 1px solid var(--hover-color);
+}
+
+.header__theme-menu-button:focus {
+  outline: none;
+}
+
+.header__theme-menu-button:focus-visible {
+  border-bottom: 1px solid var(--color-accent-decor);
+}
+
+.header__theme-menu-button_active {
+  outline: 1px solid var(--color-accent-decor);
+  pointer-events: none;
+}
+
+.title {
+  color: var(--color-accent-header);
+  font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  line-height: 83%;
+}
+
+.header__title {
+  text-shadow: 4px 4px var(--color-accent);
+  margin-inline-start: -20px;
+}
+
+.header__subhead {
+  inline-size: 491px;
+  align-self: center;
+  justify-self: end;
+}
+
+.text-bold {
+  font-weight: 700;
+}
+
+.text-regular {
+  font-weight: 400;
+}
+
+.content {
+  display: grid;
+  gap: 80px;
+  padding-inline: 2vw;
+  padding-block: 60px;
+}
+
+.why,
+.what,
+.how {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--section-grid-gap);
+}
+
+.why-description {
+  grid-column: 2 / 4;
+}
+
+.section-title-color {
+  color: var(--color-accent);
+}
+
+.general-text-decor {
+  font-size: var(--font-size-medium);
+  line-height: 130%;
+}
+
+.text-p {
+  color: var(--color-text);
+  margin-block-start: 10px;
+}
+
+.selected-text {
+  background-color: var(--color-accent);
+  color: var(--color-title);
+}
+
+.link-decor {
+  text-decoration: none;
+}
+
+.link-decor:hover {
+  border-bottom: 1px solid var(--color-text);
+}
+
+.link-decor:focus-visible {
+  outline: 1px solid var(--color-text);
+}
+
+.shadow {
+  text-shadow: 2px 2px var(--color-accent);
+}
+
+.what__title {
+  inline-size: 30%;
+  grid-column: 1 / 4;
+}
+
+.how-table {
+  display: flex;
+  flex-direction: column;
+  grid-column: 2 / 4;
+  gap: var(--section-grid-gap);
+}
+
+.pictures-panel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    "sunset sunset ice-cream"
+    "tape books ice-cream"
+    "tape street street";
+  gap: var(--section-grid-gap);
+  margin-block-start: 20px;
+}
+
+.picture-sunset {
+  grid-area: sunset;
+}
+
+.picture-ice-cream {
+  grid-area: ice-cream;
+}
+
+.picture-tape {
+  grid-area: tape;
+}
+
+.picture-books {
+  grid-area: books;
+}
+
+.picture-street {
+  grid-area: street;
+}
+
+.pictures-size {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (width <= 768px) {
+  .header__theme-menu {
+    justify-self: end;
+    align-self: center;
+  }
+
+  .header__theme-menu-list {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .header__subhead {
+    inline-size: 364px;
+  }
+
+  .content {
+    padding-inline: 2.6vw;
+  }
+
+  .why,
+  .how {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .why-description {
+    grid-column: 2;
+  }
+
+  .what {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .how-table {
+    grid-column: 2;
+  }
+}
+
+@media (width <= 375px) {
+  .header {
+    padding: 10px;
+  }
+
+  .decorated-zone::before {
+    top: 10px;
+    right: 10px;
+  }
+
+  .decorated-zone::after {
+    bottom: 10px;
+    left: 10px;
+  }
+
+  .header__decorated-element {
+    padding: 11px 19px 0 0;
+  }
+
+  .header__title {
+    margin-inline-start: 0;
+  }
+
+  .title {
+    font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  }
+
+  .header__subhead {
+    inline-size: 100%;
+  }
+
+  .content {
+    gap: 50px;
+    padding-inline: 10px;
+    padding-block: 40px;
+  }
+
+  .why,
+  .what,
+  .how {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .why-description {
+    grid-column: 2;
+  }
+
+  .what__title {
+    inline-size: 100%;
+  }
+
+  .pictures-panel {
+    display: flex;
+    flex-direction: column;
+    margin-block-start: 10px;
+    gap: 10px;
+  }
 }
