@@ -27,10 +27,11 @@
     --color-accent-decor: #353430;
     --color-text: #353430;
     --color-title: #353430;
+    --hover-color: rgba(50, 49, 45, 0.4);
     --bg-image: url(../images/cover-image-light.png);
   }
 
   .header__decorated-element {
     display: none;
-  }
+  } 
 }
